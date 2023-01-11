@@ -1,0 +1,113 @@
+---
+title: "NYC Restaurants Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    navbar:
+      - { title: "Home", href: index.html, align: right }
+    source: embed
+    theme: sandstone
+---
+
+```{r setup, include=FALSE, echo = FALSE}
+library(flexdashboard)
+library(p8105.datasets)
+library(tidyverse)
+library(plotly)
+library(lubridate)
+
+data("rest_inspec")
+
+
+rest_inspec = 
+  rest_inspec %>% 
+  as_tibble(rest_inspec) %>% 
+  janitor::clean_names()
+
+
+```
+
+Column {data-width=600}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r, echo = FALSE, message = FALSE}
+rest_inspec %>% 
+  filter(inspection_date > as.Date("2012-12-31"), boro!= "Missing") %>% 
+  filter(critical_flag == "Critical") %>% 
+  group_by(camis) %>% 
+  mutate(
+    critical = n(),
+    year = year(inspection_date)) %>% 
+  filter(year > 2012) %>% 
+  plot_ly(x = ~boro, y = ~critical, color = ~boro, colors = "viridis", type = "box",
+          frame =~year, alpha = 0.5) %>% 
+  layout(title = "The Distribution of Critical Violations per Restaurant per Borough in NYC",
+         xaxis = list(title = "Borough"),
+         yaxis = list(title = "Count"),
+         font = list(size = 9))
+  
+
+```
+
+### Chart B
+
+```{r, echo = FALSE, message = FALSE}
+rest_inspec %>% 
+  filter(critical_flag == "Critical") %>% 
+  mutate(Date = format(inspection_date, "%Y-%m")) %>%
+  group_by(Date, critical_flag) %>% 
+  summarise(
+    critical = n()
+  ) %>% 
+  ungroup() %>% 
+  plot_ly(x = ~Date, y = ~critical, type = "scatter", mode = "lines", alpha = 0.5) %>% 
+  layout(title =  "Critical Violations over Time in NYC Restaurants",
+         xaxis = list(title = "Date"),
+         yaxis = list(title = "Count"),
+         font = list(size = 9)
+         )
+
+  
+```
+
+Column  {data-height=500}
+-----------------------------------------------------------------------
+### Chart C
+
+```{r, echo = FALSE, message = FALSE, warning = FALSE}
+rest_inspec %>% 
+  filter(inspection_date > as.Date("2013-12-31"), boro!= "Missing", critical_flag != "Not Applicable") %>% 
+  mutate(year = year(inspection_date)) %>% 
+  group_by(boro, critical_flag, year) %>% 
+    summarise(count = n()) %>% 
+    plot_ly(x = ~boro, y = ~count, color = ~critical_flag, frame = ~year, type = "bar",colors = "viridis", alpha = 0.6) %>% 
+  layout(title = 
+           "Number of Critical and Not-Critical Violations by Borough in NYC",
+         xaxis = list(title = "Borough"),
+         yaxis = list(title = "Count"),
+         font = list(size = 9))
+  
+```
+
+### Chart D
+
+```{r, echo = FALSE, message = FALSE}
+
+  rest_inspec %>% 
+  filter(inspection_date > as.Date("2013-12-31"), boro != "Missing", critical_flag == "Critical", year(inspection_date) == 2017) %>% 
+  group_by(violation_code) %>% 
+  summarize(count = n()) %>% 
+  filter(count>=4886) %>% 
+  mutate(violation_code = fct_reorder(violation_code, count),
+         violation_code = recode(violation_code, "06C" = "Food not Protected","04L" = "Evidence of mice or live mice", "06D" = "Cleaning/sanitizing equipment or utensils", "02G" = "Cold foods held above temperature", "02B" = "Hot foods kept below tempretature", "04N" = "Flying insects in food area")) %>% 
+    plot_ly(x = ~count, y = ~violation_code, type = "bar", orientation = "h", alpha = 0.6) %>% 
+    layout(title = "Top 6 Most Cited Reasons among Critical Violations",
+         xaxis = list(title = "count"),
+         yaxis = list(title = "Reason"),
+         font = list(size = 9))
+  
+  
+```

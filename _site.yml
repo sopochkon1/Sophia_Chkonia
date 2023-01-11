@@ -1,0 +1,23 @@
+name: "final website"
+output_dir: "."
+navbar:
+  title: "Home"
+  left:
+    - text: "About Me"
+      href: about.html
+  right:
+    - text: "Sample Dashboard"
+      href: dashboard.html
+    - text: "P8105 Final Project"
+      href: https://sopochkon1.github.io/sheroes_finalproject.github.io/
+    - text: "RESUME"
+      href: sophia_resume.pdf
+    - icon: fa-envelope fa-lg
+      href: mailto:<sophiachkonia@gmail.com>
+    - icon: fa-github fa-lg
+      href: http://github.com/sopochkon1/
+    - icon: fa-brands fa-linkedin
+      href: https://www.linkedin.com/in/sophia-chkonia-695816223/
+output:
+  html_document:
+    theme: cosmo

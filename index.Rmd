@@ -1,0 +1,28 @@
+---
+title: 
+output: html_document
+---
+<style>
+    body {
+    background: url('images/background2.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    }
+</style>
+
+<div style="text-align: center;">
+  <img src="images/sophia.jpg" style="border-radius: 50%; border: 5px blue;width: 28%;">
+
+</style>
+<br>
+
+<div style="text-align: center;">
+
+<p style="color: white; font-weight: bold; font-size: 20px">Hello! </p>
+
+<p style="color: white; font-weight: bold; font-size: 30px">I'm Sophia, an MPH student in Epidemiology with a certificate in Global Health at the Columbia Mailman School of Public Health. Explore this website to get to know me better! </p>
+
+
+
