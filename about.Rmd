@@ -3,28 +3,19 @@ title: <center> More About Me!
 output: html_document
 ---
 
-<style>
-    body {
-    background: url('images/background1.jpg');
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    }
-    
-</style>
 
 
-<p style="color: black; font-weight: bold; font-size: 20px">I recieved my BS in Biology from University of California, Los Angeles, in 2020, and started my MPH in Columbia in 2021.</p>
 
-<p style="color: black; font-weight: bold; font-size: 20px">I am interested in Global Health, emerging infectious disease, infectious disease control, data science in public health, and have found a new interest in building websites!</p> 
+ * <p style="color: black; font-weight: bold; font-size: 15px">I recieved my BS in Biology from University of California, Los Angeles, in 2020, and started my MPH in Columbia in 2021.</p>
 
-<p style="color: black; font-weight: bold; font-size: 20px">I also like sailing, hiking, and traveling to new places!</p>
+ * <p style="color: black; font-weight: bold; font-size: 15px">I am interested in Global Health, emerging infectious disease, infectious disease control, data science in public health, and have found a new interest in building websites!</p> 
 
-<p style="color: black; font-weight: bold; font-size: 20px"> This website contains my resume, my Github, a sample dashboard, my contact information, and my P8105 final project, which ended up in the top 5 projects of the semester (observe below the cow sticker we received as a reward)</p>
+ * <p style="color: black; font-weight: bold; font-size: 15px">I also like sailing, hiking, and traveling to new places!</p>
+
+ * <p style="color: black; font-weight: bold; font-size: 15px"> This website contains my resume, my Github, a sample dashboard, my contact information, and my P8105 final project, which ended up in the top 5 projects of the semester (observe below the cow sticker we received as a reward)</p>
 
 
-<p style="color: black; font-weight: bold; font-size: 20px">fun fact about me: Even though I was born in the United States, I grew up in Georgia (the country).</p>
+* <p style="color: black; font-weight: bold; font-size: 15px">fun fact about me: Even though I was born in the United States, I grew up in Georgia (the country).</p>
  </div>
   </div>
 </div>
